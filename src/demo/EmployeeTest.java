@@ -24,8 +24,9 @@ public class EmployeeTest
 			System.out.println("2. Calculate Attendance");
 			System.out.println("3. Calculate Salary");
 			System.out.println("4. Display Employee Details");
-			System.out.println("5. Exit");
-			
+			System.out.println("5. Save Employee Details to File");
+	        System.out.println("6. Read Employee Details from File");
+	        System.out.println("7. Exit");
 			System.out.println("Enter your choice: ");
 			choice = sc.nextInt();
 			switch (choice) 
