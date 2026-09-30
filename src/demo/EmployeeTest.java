@@ -1,4 +1,9 @@
 package demo;
+import java.io.BufferedReader; 
+import java.io.FileReader; 
+import java.io.FileWriter; 
+import java.io.PrintWriter; 
+import java.io.IOException; 
 import java.util.Scanner;
 public class EmployeeTest 
 {
@@ -9,6 +14,7 @@ public class EmployeeTest
 		Attendance attendance = new Attendance();
 		Salary salary = new Salary();
 		int choice;
+		String fileName="employee_payroll.txt";
 		do 
 		{
 			System.out.println("\n============================================");
@@ -177,13 +183,68 @@ public class EmployeeTest
 				}
 				break;
 			case 5:
-				System.out.println("\nThank you for using the system.");
+			    System.out.println("\n--- SAVE EMPLOYEE TO FILE ---");
+
+			    try {
+			        FileWriter fw = new FileWriter(fileName);
+			        PrintWriter pw = new PrintWriter(fw);
+
+			        pw.println("EMPLOYEE PAYROLL DETAILS");
+			        pw.println("========================");
+			        pw.println("Employee ID: " + employee.employeeId);
+			        pw.println("Employee Name: " + employee.employeeName);
+			        pw.println("Department: " + employee.department);
+			        pw.println("Basic Salary: " + employee.basicSalary);
+
+			        pw.println("Total Working Days: " + attendance.totalWorkingDays);
+			        pw.println("Present Days: " + attendance.presentDays);
+			        pw.println("Absent Days: " + attendance.absentDays);
+			        pw.println("Attendance Percentage: "
+			                + attendance.attendancePercentage);
+
+			        pw.println("Final Salary: " + salary.finalSalary);
+
+			        pw.close();
+
+			        System.out.println("Employee details saved successfully.");
+			        System.out.println("File Name: " + fileName);
+
+			    } catch (IOException e) {
+			        System.out.println("Error while writing to file.");
+			        System.out.println(e.getMessage());
+			    }
+
 				break;
+			case 6:
+			    System.out.println("\n--- READ EMPLOYEE DETAILS FROM FILE ---");
+
+			    try {
+			        FileReader fr = new FileReader(fileName);
+			        BufferedReader br = new BufferedReader(fr);
+
+			        String line;
+
+			        while ((line = br.readLine()) != null) {
+			            System.out.println(line);
+			        }
+
+			        br.close();
+
+			    } catch (IOException e) {
+			        System.out.println("Error while reading file.");
+			        System.out.println("Please save employee details first.");
+			    }
+
+			    break;
+			    
+			case 7:
+			    System.out.println("\nThank you for using the system.");
+			    break;
 				default:
-					System.out.println("Invalid menu choice. please enter 1 to 5 ");
+					System.out.println("Invalid menu choice. please enter 1 to 7 ");
 			}
 		}
-		while (choice !=5);
+		while (choice !=7);
 		sc.close();
 		
 	}

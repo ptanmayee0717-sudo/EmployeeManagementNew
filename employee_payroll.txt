@@ -1,0 +1,11 @@
+EMPLOYEE PAYROLL DETAILS
+========================
+Employee ID: 2
+Employee Name: tanmayee
+Department: HR
+Basic Salary: 50000.0
+Total Working Days: 0
+Present Days: 0
+Absent Days: 0
+Attendance Percentage: 0.0
+Final Salary: 0.0
